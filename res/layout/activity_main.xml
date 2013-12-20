@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <EditText
+        android:id="@+id/activity_main_edt_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Ingresa tu número"
+        android:inputType="numberDecimal"
+        android:maxLength="4" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/activity_main_tv_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_main_edt_number"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Respuesta: "
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/activity_main_btn_listo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/activity_main_tv_titulo"
+        android:layout_marginTop="19dp"
+        android:text="Listo!"
+        android:textSize="16sp" />
+
+    <ScrollView
+        android:id="@+id/activity_main_scrollview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_main_btn_listo"
+        android:layout_marginLeft="5dp" >
+
+        <LinearLayout
+            android:id="@+id/activity_main_layout_contenedor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

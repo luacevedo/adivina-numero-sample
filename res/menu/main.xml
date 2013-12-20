@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/itemNuevo"
+        android:title="Juego nuevo">
+    </item>
+    <item
+        android:id="@+id/itemDificultad"
+        android:title="Dificultad">
+        <menu>
+            <item
+                android:id="@+id/itemFacil"
+                android:title="Facil (20 intentos)"/>
+            <item
+                android:id="@+id/itemMedio"
+                android:title="Medio (10 intentos)"/>
+            <item
+                android:id="@+id/itemDificil"
+                android:title="Dificil (5 intentos)"/>
+        </menu>
+    </item>
+
+</menu>
