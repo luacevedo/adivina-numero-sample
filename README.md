@@ -1,4 +1,4 @@
-adivina-numero-sample
+Adivina el número
 =====================
 
-This is sample android app to guest a 4 digit number.
+Es una aplicación de prueba para adivinar un número de 4 dígitos.
