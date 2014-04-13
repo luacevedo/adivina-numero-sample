@@ -10,14 +10,11 @@
 
     <EditText
         android:id="@+id/activity_main_edt_number"
+        style="@style/styleForEdtNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Ingresa tu número"
-        android:inputType="numberDecimal"
-        android:maxLength="4" >
+        android:hint="@string/ingresa_tu_numero" >
 
         <requestFocus />
     </EditText>
@@ -27,10 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_main_edt_number"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Respuesta: "
-        android:textSize="12sp" />
+        android:layout_marginLeft="@dimen/activity_main_title_margin"
+        android:layout_marginTop="@dimen/activity_main_title_margin"
+        android:textSize="@dimen/activity_main_title_textsize" />
 
     <Button
         android:id="@+id/activity_main_btn_listo"
@@ -38,21 +34,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/activity_main_tv_titulo"
-        android:layout_marginTop="19dp"
-        android:text="Listo!"
-        android:textSize="16sp" />
+        android:layout_marginTop="@dimen/activity_main_done_margin"
+        android:text="@string/listo"
+        android:textSize="@dimen/activity_main_done_textsize" />
 
     <ScrollView
         android:id="@+id/activity_main_scrollview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/activity_main_btn_listo"
-        android:layout_marginLeft="5dp" >
+        android:layout_marginLeft="@dimen/activity_main_scroll_margin" >
 
         <LinearLayout
             android:id="@+id/activity_main_layout_contenedor"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
         </LinearLayout>
     </ScrollView>
