@@ -2,21 +2,21 @@
 
     <item
         android:id="@+id/itemNuevo"
-        android:title="Juego nuevo">
+        android:title="@string/juego_nuevo">
     </item>
     <item
         android:id="@+id/itemDificultad"
-        android:title="Dificultad">
+        android:title="@string/dificultad">
         <menu>
             <item
                 android:id="@+id/itemFacil"
-                android:title="Facil (20 intentos)"/>
+                android:title="@string/facil_20_intentos_"/>
             <item
                 android:id="@+id/itemMedio"
-                android:title="Medio (10 intentos)"/>
+                android:title="@string/medio_10_intentos_"/>
             <item
                 android:id="@+id/itemDificil"
-                android:title="Dificil (5 intentos)"/>
+                android:title="@string/dificil_5_intentos_"/>
         </menu>
     </item>
 

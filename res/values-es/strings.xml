@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Adiviná el número</string>
+    <string name="action_settings">Configuración</string>
+    <string name="no_ingreso_ningun_numero">No ingresó ningún número</string>
+    <string name="ganaste_en">Ganaste en %1$s intentos! El número era: %2$s. ¿Querés jugar otra vez?</string>
+    <string name="estado_jugada">%1$s, tiene %2$s numeros bien y %3$s regulares</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="fin_del_juego_iniciar_juego_nuevo">Fin del juego. ¿Iniciar juego nuevo?</string>
+    <string name="reiniciar_partida">¿Iniciar juego nuevo?</string>
+    <string name="el_numero_no_puede_tener_digitos_repetidos">El número no puede tener digitos repetidos</string>
+    <string name="juego_nuevo">Juego nuevo</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="facil_20_intentos_">Fácil (20 intentos)</string>
+    <string name="medio_10_intentos_">Medio (10 intentos)</string>
+    <string name="dificil_5_intentos_">Difícil (5 intentos)</string>
+    <string name="respuesta">Respuesta: %1$s</string>
+
+</resources>

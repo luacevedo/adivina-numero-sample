@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Adiviná el número</string>
-    <string name="action_settings">Configuración</string>
+    <string name="app_name">Guess the number</string>
+    <string name="action_settings">Dificultad</string>
+    <string name="no_ingreso_ningun_numero">You didn\'t enter a number</string>
+    <string name="ganaste_en">You won in %1$s tries! The numer was: %2$s. ¿Play again?</string>
+    <string name="estado_jugada">%1$s, has %2$s right numbers and %3$s missplaced</string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+    <string name="fin_del_juego_iniciar_juego_nuevo">End of game. ¿Play again?</string>
+    <string name="el_numero_no_puede_tener_digitos_repetidos">The number can not have duplicate numbers</string>
+    <string name="juego_nuevo">New game</string>
+    <string name="dificultad">Difficulty</string>
+    <string name="facil_20_intentos_">Easy (20 tries)</string>
+    <string name="medio_10_intentos_">Medium (10 tries)</string>
+    <string name="dificil_5_intentos_">Hard (5 tries)</string>
+    <string name="reiniciar_partida">¿Start new game?</string>
+    <string name="respuesta">Answer: %1$s</string>
 
 </resources>
