@@ -17,5 +17,7 @@
     <string name="dificil_5_intentos_">Hard (5 tries)</string>
     <string name="reiniciar_partida">¿Start new game?</string>
     <string name="respuesta">Answer: %1$s</string>
+    <string name="ingresa_tu_numero">Enter your number</string>
+    <string name="listo">Done!</string>
 
 </resources>

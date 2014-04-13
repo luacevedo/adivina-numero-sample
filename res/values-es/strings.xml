@@ -17,5 +17,7 @@
     <string name="medio_10_intentos_">Medio (10 intentos)</string>
     <string name="dificil_5_intentos_">Difícil (5 intentos)</string>
     <string name="respuesta">Respuesta: %1$s</string>
+    <string name="ingresa_tu_numero">Ingresá tu número</string>
+    <string name="listo">¡Listo!</string>
 
 </resources>
