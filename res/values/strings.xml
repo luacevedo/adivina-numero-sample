@@ -12,9 +12,10 @@
     <string name="el_numero_no_puede_tener_digitos_repetidos">The number can not have duplicate numbers</string>
     <string name="juego_nuevo">New game</string>
     <string name="dificultad">Difficulty</string>
-    <string name="facil_20_intentos_">Easy (20 tries)</string>
-    <string name="medio_10_intentos_">Medium (10 tries)</string>
-    <string name="dificil_5_intentos_">Hard (5 tries)</string>
+    <string name="facil_20_intentos">Easy (20 tries)</string>
+    <string name="medio_10_intentos">Medium (10 tries)</string>
+    <string name="dificil_5_intentos">Hard (5 tries)</string>
+    <string name="mejor_jugada">Best play</string>
     <string name="reiniciar_partida">¿Start new game?</string>
     <string name="respuesta">Answer: %1$s</string>
     <string name="ingresa_tu_numero">Enter your number</string>

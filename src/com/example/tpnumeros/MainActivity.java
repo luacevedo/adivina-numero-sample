@@ -6,7 +6,10 @@ import java.util.Random;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +23,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+	private static final String TITULO_PUNTAJE_ACTIVITY = "tituloPuntajeActivity";
+	private static final String PUNTAJE = "puntaje";
 	private static final int PRIMER_NUMERO_VALIDO = 1023;
 	private static final int LONGITUD_DEL_NUMERO = 4;
 	private static final int INTENTOS_DIFICULTAD_DIFICIL = 5;
@@ -71,9 +76,10 @@ public class MainActivity extends Activity {
 
 		txtResultado = (TextView) findViewById(R.id.activity_main_tv_titulo);
 		int numeroParaAdivinarFormateado = (this.numeroGenerado[0] * 1000)
-				+ (this.numeroGenerado[1] * 100) + (this.numeroGenerado[2] * 10)
-				+ this.numeroGenerado[3];
-		txtResultado.setText(String.format(getResources().getString(R.string.respuesta),
+				+ (this.numeroGenerado[1] * 100)
+				+ (this.numeroGenerado[2] * 10) + this.numeroGenerado[3];
+		txtResultado.setText(String.format(
+				getResources().getString(R.string.respuesta),
 				numeroParaAdivinarFormateado));
 	}
 
@@ -130,7 +136,8 @@ public class MainActivity extends Activity {
 
 	public void validar() {
 		if (this.edtNumero.getText().toString().trim().equals("")) {
-			Toast.makeText(this, R.string.no_ingreso_ningun_numero, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.no_ingreso_ningun_numero,
+					Toast.LENGTH_SHORT).show();
 		} else {
 			int num = Integer.parseInt(edtNumero.getText().toString());
 			this.numeroIngresado = this.validarNum(num);
@@ -138,6 +145,7 @@ public class MainActivity extends Activity {
 			if (this.numeroIngresado != null) {
 				if (esGanador()) {
 					habilitarUI(false);
+					guardarPuntaje();
 					mostrarDialogGanador();
 				} else {
 					if (terminoJuego()) {
@@ -153,17 +161,34 @@ public class MainActivity extends Activity {
 
 	}
 
+	private void guardarPuntaje() {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		int puntajeAnterior = preferences.getInt(PUNTAJE, 0);
+
+		if (debeGuardarElPuntaje(puntajeAnterior)) {
+			preferences.edit().putInt(PUNTAJE, intentos).commit();
+		}
+	}
+
+	private boolean debeGuardarElPuntaje(int puntajeAnterior) {
+		return (puntajeAnterior == 0) || (puntajeAnterior > intentos);
+	}
+
 	private void mostrarDialogGanador() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(String.format(getResources().getString(R.string.ganaste_en),
-				this.intentos, this.edtNumero.getText().toString()));
+		builder.setMessage(String.format(
+				getResources().getString(R.string.ganaste_en), this.intentos,
+				this.edtNumero.getText().toString()));
 		builder.setCancelable(false);
-		builder.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				juegoNuevo();
-			}
-		});
+		builder.setPositiveButton(R.string.si,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						juegoNuevo();
+					}
+				});
 		builder.setNegativeButton(R.string.no, null);
 		builder.show();
 	}
@@ -171,11 +196,13 @@ public class MainActivity extends Activity {
 	private void mostrarResultado() {
 		TextView txtEstadoDeJugada = new TextView(this);
 
-		int numero = (this.numeroIngresado[0] * 1000) + (this.numeroIngresado[1] * 100)
+		int numero = (this.numeroIngresado[0] * 1000)
+				+ (this.numeroIngresado[1] * 100)
 				+ (this.numeroIngresado[2] * 10) + this.numeroIngresado[3];
 
-		txtEstadoDeJugada.setText(String.format(getResources().getString(R.string.estado_jugada),
-				numero, this.numerosBien, this.numerosRegular));
+		txtEstadoDeJugada.setText(String.format(
+				getResources().getString(R.string.estado_jugada), numero,
+				this.numerosBien, this.numerosRegular));
 
 		// Especifica el tamaño del texto
 		txtEstadoDeJugada.setTextSize(15);
@@ -189,13 +216,14 @@ public class MainActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(R.string.fin_del_juego_iniciar_juego_nuevo);
 		builder.setCancelable(false);
-		builder.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.si,
+				new DialogInterface.OnClickListener() {
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				juegoNuevo();
-			}
-		});
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						juegoNuevo();
+					}
+				});
 		builder.setNegativeButton(R.string.no, null);
 		builder.show();
 	}
@@ -204,13 +232,14 @@ public class MainActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(R.string.reiniciar_partida);
 		builder.setCancelable(true);
-		builder.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.si,
+				new DialogInterface.OnClickListener() {
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				juegoNuevo();
-			}
-		});
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						juegoNuevo();
+					}
+				});
 		builder.setNegativeButton(R.string.no, null);
 		builder.show();
 	}
@@ -228,7 +257,8 @@ public class MainActivity extends Activity {
 				// No hace falta poner todos los strings adentro del archivo
 				// strings.xml aunque eso hará que este string no se pueda
 				// localizar
-				Toast.makeText(this, "El número no es valido", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "El número no es valido",
+						Toast.LENGTH_SHORT).show();
 				return null;
 			} else {
 
@@ -245,7 +275,8 @@ public class MainActivity extends Activity {
 		for (i = 3; i >= 0; i--) {
 			int digito = num % 10;
 			if (fueUtilizado(vector, digito)) {
-				Toast.makeText(this, R.string.el_numero_no_puede_tener_digitos_repetidos,
+				Toast.makeText(this,
+						R.string.el_numero_no_puede_tener_digitos_repetidos,
 						Toast.LENGTH_SHORT).show();
 				return null;
 			} else {
@@ -293,10 +324,12 @@ public class MainActivity extends Activity {
 		this.intentos = 0;
 		this.txtIntentos.clear();
 		this.edtNumero.setText("");
-		int n = (this.numeroGenerado[0] * 1000) + (this.numeroGenerado[1] * 100)
+		int numeroParaAdivinarFormateado = (this.numeroGenerado[0] * 1000)
+				+ (this.numeroGenerado[1] * 100)
 				+ (this.numeroGenerado[2] * 10) + this.numeroGenerado[3];
-		this.txtResultado.setText(R.string.respuesta + n);
-
+		txtResultado.setText(String.format(
+				getResources().getString(R.string.respuesta),
+				numeroParaAdivinarFormateado));
 	}
 
 	private void habilitarUI(boolean habilitar) {
@@ -314,7 +347,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Agrega items a la action bar si es que está presente
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
 
@@ -333,9 +366,23 @@ public class MainActivity extends Activity {
 		case R.id.itemDificil:
 			setDificultad(INTENTOS_DIFICULTAD_DIFICIL);
 			return true;
+		case R.id.itemMejorJugada:
+			abrirMejorPuntajeAcitivty();
+			return true;
 		default:
 			return false;
 		}
 
+	}
+
+	private void abrirMejorPuntajeAcitivty() {
+		// Para abrir una Acitivty nueva es necesario utilizar un intent donde
+		// se especifica la clase de la Activity que se quiere instanciar.
+		// También se le pueden agregar datos para comunicar a las distintas
+		// acitivties
+		Intent intent = new Intent(this, MejorJugadaAcitivty.class);
+		intent.putExtra(TITULO_PUNTAJE_ACTIVITY,
+				getResources().getString(R.string.mejor_jugada));
+		startActivity(intent);
 	}
 }
