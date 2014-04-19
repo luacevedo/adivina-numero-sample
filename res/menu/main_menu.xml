@@ -10,14 +10,17 @@
         <menu>
             <item
                 android:id="@+id/itemFacil"
-                android:title="@string/facil_20_intentos_"/>
+                android:title="@string/facil_20_intentos"/>
             <item
                 android:id="@+id/itemMedio"
-                android:title="@string/medio_10_intentos_"/>
+                android:title="@string/medio_10_intentos"/>
             <item
                 android:id="@+id/itemDificil"
-                android:title="@string/dificil_5_intentos_"/>
+                android:title="@string/dificil_5_intentos"/>
         </menu>
     </item>
+    <item
+        android:id="@+id/itemMejorJugada"
+        android:title="@string/mejor_jugada"/>
 
 </menu>
